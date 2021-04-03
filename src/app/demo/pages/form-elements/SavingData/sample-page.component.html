@@ -1,0 +1,32 @@
+
+      <h5>Add New Client</h5>
+      <hr>
+      <div class="row">
+        <div class="col-md-6">
+          <form #ClientForm = "ngForm" novalidate action="javascript:">
+            {{ClientForm.value | json}}
+
+            <div class="form-group">
+              <label>Company Name</label>
+              <input type="text" class="form-control" id="companyName" placeholder="companyName" name="companyName" [(ngModel)] = "client.companyName">
+            </div>
+            <div class="form-group">
+              <label>typeOfBusiness</label> 
+              <input type="text" class="form-control" id="typeOfBusiness" placeholder="typeOfBusiness" name="typeOfBusiness" [(ngModel)] = "client.typeOfBusiness">
+            </div>
+            <div class="form-group">
+              <label>rating</label> 
+              <input type="text" class="form-control" id="rating" placeholder="rating" name="rating" [(ngModel)] = "client.rating">
+            </div>
+            <div class="form-group">
+              <label>companyEstablishDate</label>
+              <input type="text" class="form-control" id="companyEstablishDate" placeholder="companyEstablishDate" name="companyEstablishDate" [(ngModel)] = "client.companyEstablishDate">
+            </div>
+            <div class="form-group">
+              <label>country</label>
+              <input type="text" class="form-control" id="country" placeholder="country" name="country" [(ngModel)] = "client.country">
+            </div>
+            <button (click)="add()" type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>

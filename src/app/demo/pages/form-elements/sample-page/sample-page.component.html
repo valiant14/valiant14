@@ -1,0 +1,82 @@
+<app-card cardTitle="Basic Component" [options]="false">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm">
+          <!--TOP Table-->
+          <div class="col-sm-12">
+              <table datatable class="table table-striped table-bordered nowrap table-hover">
+                  <thead>
+                  <tr>
+                    <th>
+                      Select
+                    </th>
+                    <th>ID</th>
+                    <th>Company Name</th>
+                    <th>Type of Bussines</th>
+                    <th>Start date</th>
+                    <th>Country</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor = "let list of ClientList | filter:filterTerm | paginate: { itemsPerPage: 5, currentPage: p }">
+                    <td>
+                      <input type="checkbox" name="checkbox-in-3" id="checkbox-infill-2">
+                    </td>
+                    <td>{{list.clientID}}</td>
+                    <td>{{list.companyName}}</td>
+                    <td>{{list.typeOfBusiness}}</td>
+                    <td>{{list.companyEstablishDate}}</td>
+                    <td>{{list.country}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+            </div>
+        </div>
+      </div>
+      <div class="col-sm">
+        <!--Under Form-->
+
+        <div class="row">
+            <div class="col-sm-12">
+            <form #ClientForm = "ngForm" novalidate action="javascript:">
+              <div class="form-group">
+                <label>Company Name</label>
+                <input type="text" class="form-control" id="companyName" placeholder="companyName" name="companyName" [(ngModel)] = "client.companyName">
+              </div>
+              <div class="form-group">
+                <label>typeOfBusiness</label> 
+                <input type="text" class="form-control" id="typeOfBusiness" placeholder="typeOfBusiness" name="typeOfBusiness" [(ngModel)] = "client.typeOfBusiness">
+              </div>
+              
+              <!--Date-->
+                    <div class="form-group">
+                    <label>Date</label> 
+                      <div class="input-group">
+                        <input class="form-control" placeholder="yyyy-mm-dd"
+                               name="dp" [(ngModel)]="client.companyEstablishDate" ngbDatepicker [markDisabled]="isDisabled" #dcd="ngbDatepicker">
+                        <div class="input-group-append bg-default" (click)="dcd.toggle()" >
+                          <span class="input-group-text">
+                            <i class="fa fa-calendar"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+              <div class="form-group">
+                  <label>Country</label>
+                <ng-select [ngClass]="'ng-select'" [options]="countries" [allowClear]="true" name="countries" placeholder="Choose your Country" id="country" [(ngModel)]="client.country">
+                  <ng-template #optionTemplate let-option="option">
+                    <div class="famfamfam-flags {{option?.value.toLowerCase()}}"></div>
+                    {{option?.label}}
+                  </ng-template>
+                </ng-select>
+              </div>
+              <button (click)="add()" type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+</app-card>
+

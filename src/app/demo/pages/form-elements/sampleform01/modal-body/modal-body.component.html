@@ -1,0 +1,29 @@
+<div class="form-group">
+  <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="filterTerm">
+</div>
+
+<div class="table-responsive">
+  <table datatable class="table table-striped table-bordered nowrap table-hover">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Company Name</th>
+      <th>Type of Bussines</th>
+      <th>Rating</th>
+      <th>Start date</th>
+      <th>Country</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor = "let list of ClientList | filter:filterTerm | paginate: { itemsPerPage: 5, currentPage: p }">
+      <td>{{list.clientID}}</td>
+      <td>{{list.companyName}}</td>
+      <td>{{list.typeOfBusiness}}</td>
+      <td>{{list.rating}}</td>
+      <td>{{list.companyEstablishDate}}</td>
+      <td>{{list.country}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>

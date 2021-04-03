@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-sm-12">
+    <app-card cardTitle="Date" [options]="false">
+      <div class="row">
+        <div class="col-md-12 col-lg-3">
+          <hr>
+          <form class="form-inline">
+            <div class="form-group">
+              <div class="input-group">
+                <input class="form-control" placeholder="yyyy-mm-dd"
+                       name="dp" [(ngModel)]="modelCustomDay" ngbDatepicker  [markDisabled]="isDisabled" #dcd="ngbDatepicker">
+                <div class="input-group-append bg-default" (click)="dcd.toggle()" >
+                  <span class="input-group-text">
+                    <i class="fa fa-calendar"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </app-card>
+  </div>
+</div>

@@ -1,0 +1,90 @@
+<app-card cardTitle="Add Client" [options]="false">
+  <aw-wizard #wizard class="arc-wizard" navBarLayout="large-filled-symbols">
+    <aw-wizard-step stepTitle="Profile" [navigationSymbol]="{ symbol: '&#xe8e9;', fontFamily: 'feather' }" [style.font-weight]="900">
+      <div class="row">
+        <div class="col-sm-12">
+         <!--Form Goes Here-->
+         <div class="row">
+          <div class="col-md-12">
+            <form #ClientForm = "ngForm" novalidate action="javascript:">
+              <div class="form-group">
+                <label>First Name</label>
+                <input type="text" class="form-control" id="firstName" placeholder="First Name" name="name" [(ngModel)] = "person.firstName">
+              </div>
+              <div class="form-group">
+                <label>Last Name</label> 
+                <input type="text" class="form-control" id="lastName" placeholder="Last Name" name="lastName" [(ngModel)] = "person.lastName">
+              </div>
+              <div class="form-group">
+                <label>Gender</label> 
+                <input type="text" class="form-control" id="gender" placeholder="gender" name="gender" [(ngModel)] = "person.gender">
+              </div>
+              <div class="form-group">
+                <label>Age</label>
+                <input type="number" class="form-control" id="age" placeholder="Age" name="age" [(ngModel)] = "person.age">
+              </div>
+            </form>
+          </div>
+        </div>
+        </div>
+        <div class="col-sm-12 centered-content">
+          <div class="btn-group mt-10">
+            <button type="button" class="btn btn-primary btn-sm" awNextStep>Continue</button>
+          </div>
+        </div>
+      </div>
+    </aw-wizard-step>
+    <aw-wizard-step stepTitle="Address" [navigationSymbol]="{ symbol: '&#xe88c;', fontFamily: 'feather' }" [style.font-weight]="900">
+      <div class="row">
+        <div class="col-sm-12">
+          <!--Form Detail Goes Here-->
+          <div class="col-md-12">
+            <form #ClientForm = "ngForm" novalidate action="javascript:">
+              <div class="form-group">
+                <label>Company Name</label>
+                <input type="text" class="form-control" id="companyName" placeholder="companyName" name="companyName" [(ngModel)] = "client.companyName">
+              </div>
+              <div class="form-group">
+                <label>typeOfBusiness</label> 
+                <input type="text" class="form-control" id="typeOfBusiness" placeholder="typeOfBusiness" name="typeOfBusiness" [(ngModel)] = "client.typeOfBusiness">
+              </div>
+              <div class="form-group">
+                <label>rating</label> 
+                <input type="text" class="form-control" id="rating" placeholder="rating" name="rating" [(ngModel)] = "client.rating">
+              </div>
+              <div class="form-group">
+                <label>companyEstablishDate</label>
+                <input type="text" class="form-control" id="companyEstablishDate" placeholder="companyEstablishDate" name="companyEstablishDate" [(ngModel)] = "client.companyEstablishDate">
+              </div>
+              <div class="form-group">
+                <label>country</label>
+                <input type="text" class="form-control" id="country" placeholder="country" name="country" [(ngModel)] = "client.country">
+              </div>
+            </form>
+          </div>
+
+        </div>
+        <div class="col-sm-12 centered-content">
+          <div class="btn-group mt-10">
+            <button type="button" class="btn btn-secondary btn-sm" awPreviousStep>Back</button>
+            <button type="button" class="btn btn-primary btn-sm" awNextStep>Continue</button>
+          </div>
+        </div>
+      </div>
+    </aw-wizard-step>
+    <aw-wizard-step stepTitle="Completed" [navigationSymbol]="{ symbol: '&#xe840;', fontFamily: 'feather' }">
+      <div class="row">
+        <div class="col-sm-12">
+          <!--Form Final Details Goes Here-->
+          <h2>Is this correct?</h2>
+        </div>
+        <div class="col-sm-12 centered-content">
+          <div class="btn-group mt-10">
+            <button type="button" class="btn btn-secondary btn-sm" awPreviousStep>Back</button>
+            <button type="button" class="btn btn-success btn-sm" (click)="add()" awResetWizard>Finished</button>
+          </div>
+        </div>
+      </div>
+    </aw-wizard-step>
+  </aw-wizard>
+</app-card>
